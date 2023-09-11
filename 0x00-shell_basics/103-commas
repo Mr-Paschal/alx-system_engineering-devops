@@ -1,2 +1,4 @@
 #!/bin/bash
-ls -m
+ls -Al | LC_ALL=C sort -d | awk '{if($0=="."||$0=="..") {print $0}
+else if (substr($0, 1, 1) ~ / [0-9a-zA-Z]/) {print $0} 
+else {print $0"/"}}' | tr '\n' ',' ; echo
